@@ -221,3 +221,122 @@
         .empty-tab-message { padding: 20px; color: var(--text-sub); grid-column: 1 / -1; }
     </style>
 </head>
+<body>
+
+    <!-- ШАПКА -->
+    <header>
+        <div class="logo" onclick="showPage('home-page')">MokSteR <span>PAY</span></div>
+        <label class="theme-switch">
+            <input type="checkbox" id="themeToggle" onchange="toggleTheme(this)">
+            <div class="slider"></div>
+        </label>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="container">
+        
+        <!-- ГЛАВНАЯ СТРАНИЦА С РАЗДЕЛЕНИЕМ -->
+        <div id="home-page" class="page active">
+            
+            <!-- РАЗДЕЛ 1: ИГРЫ -->
+            <div class="section-title">Игры</div>
+            <div class="grid-items">
+                <div class="selector-card" onclick="showPage('roblox-page')">
+                    <div class="card-icon roblox-bg">
+                        <div class="roblox-square"></div>
+                    </div>
+                    <h3 class="card-name">Roblox</h3>
+                </div>
+            </div>
+
+            <!-- РАЗДЕЛ 2: СЕРВИСЫ -->
+            <div class="section-title">Сервисы</div>
+            <div class="grid-items">
+                
+                <!-- Карточка Steam -->
+                <div class="selector-card" onclick="alert('Магазин Steam находится в разработке!')">
+                    <div class="card-icon steam-bg">
+                        <!-- Официальный векторный логотип Steam -->
+                        <svg class="svg-logo" viewBox="0 0 24 24">
+                            <path d="M12 .002c-4.99 0-9.25 3.073-10.99 7.424l5.352 2.213c.535-.373 1.189-.594 1.895-.594 1.48 0 2.72 1.034 3.018 2.41l5.59-2.312c-.053-.523-.082-1.054-.082-1.593 0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c-.54 0-1.07-.029-1.593-.082l-2.312 5.59c1.376.298 2.41 1.537 2.41 3.018 0 1.712-1.388 3.1-3.1 3.1-1.48 0-2.72-1.034-3.018-2.41l-5.59 2.312c.053.523.082 1.054.082 1.593 0 5.523-4.477 10-10 10A9.98 9.98 0 0 1 0 12.002c0-5.32 4.15-9.67 9.42-9.98l2.312-5.59C10.356 6.134 9.322 4.895 9.322 3.414c0-1.712 1.388-3.1 3.1-3.1zM12 4.966c-.854 0-1.55.695-1.55 1.55s.696 1.55 1.55 1.55 1.55-.695 1.55-1.55-.696-1.55-1.55-1.55zm0 13.916c-.854 0-1.55.696-1.55 1.55 0 .855.696 1.55 1.55 1.55s1.55-.695 1.55-1.55c0-.854-.696-1.55-1.55-1.55z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-name">Steam</h3>
+                </div>
+
+                <!-- Карточка Telegram -->
+                <div class="selector-card" onclick="alert('Магазин Telegram находится в разработке!')">
+                    <div class="card-icon telegram-bg">
+                        <!-- Официальный векторный логотип Telegram -->
+                        <svg class="svg-logo" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.562 8.161c-.18.717-.962 4.084-1.362 5.49-.168.598-.445.796-.659.814-.468.041-.822-.264-1.275-.561-.707-.464-1.107-.751-1.794-1.203-.794-.523-.279-.811.173-1.281.118-.123 2.167-1.989 2.207-2.161.005-.021.01-.1-.038-.142-.047-.042-.117-.028-.168-.016-.072.016-1.217.772-3.428 2.263-.323.222-.616.33-.879.324-.29-.006-.848-.164-1.263-.299-.509-.166-.914-.254-.878-.537.019-.147.221-.299.606-.454 2.379-.981 3.964-1.63 4.754-1.947 2.257-.902 2.724-1.058 3.03-.1058.067.02.217.073.315.155.083.07.112.164.12.235.016.146.002.42-.008.647z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-name">Telegram</h3>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- СТРАНИЦА ТОВАРОВ ROBLOX -->
+        <div id="roblox-page" class="page">
+            <button class="back-btn" onclick="showPage('home-page')">← Назад</button>
+            
+            <div class="tabs-container">
+                <button class="tab-pill active" onclick="switchMarketTab(event, 'tab-robux')">Робуксы</button>
+                <button class="tab-pill" onclick="switchMarketTab(event, 'tab-items')">Предметы</button>
+                <button class="tab-pill" onclick="switchMarketTab(event, 'tab-accounts')">Аккаунты</button>
+            </div>
+
+            <div id="tab-robux" class="products-market active">
+                <div class="market-card">
+                    <div class="card-badges"><div class="badge-info">изучите описание</div><div class="badge-auto">⚡ Автовыдача</div></div>
+                    <div><div class="market-amount">190</div><div class="market-subtext">робуксов (промокодом)<br>+ предмет в подарок</div></div>
+                    <div class="price-row"><span class="current-price">299 ₽</span><span class="discount-tag">-20%</span><span class="old-price">374</span></div>
+                </div>
+                <div class="market-card">
+                    <div class="card-badges"><div class="badge-info">изучите описание</div><div class="badge-auto">⚡ Автовыдача</div></div>
+                    <div><div class="market-amount">260</div><div class="market-subtext">робуксов (промокодом)<br>+ предмет в подарок</div></div>
+                    <div class="price-row"><span class="current-price">399 ₽</span><span class="discount-tag">-20%</span><span class="old-price">499</span></div>
+                </div>
+                <div class="market-card">
+                    <div class="card-badges"><div class="badge-info">изучите описание</div><div class="badge-auto">⚡ Автовыдача</div></div>
+                    <div><div class="market-amount">340</div><div class="market-subtext">робуксов (промокодом)<br>+ предмет в подарок</div></div>
+                    <div class="price-row"><span class="current-price">529 ₽</span><span class="discount-tag">-17%</span><span class="old-price">639</span></div>
+                </div>
+            </div>
+
+            <div id="tab-items" class="products-market">
+                <div class="empty-tab-message">Вкладка предметов пуста или находится в разработке...</div>
+            </div>
+            <div id="tab-accounts" class="products-market">
+                <div class="empty-tab-message">Вкладка аккаунтов пуста или находится в разработке...</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- УПРАВЛЯЮЩИЕ СКРИПТЫ -->
+    <script>
+        function showPage(pageId) {
+            const pages = document.getElementsByClassName('page');
+            for (let i = 0; i < pages.length; i++) { pages[i].classList.remove('active'); }
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function switchMarketTab(event, tabId) {
+            const contents = document.getElementsByClassName('products-market');
+            for (let i = 0; i < contents.length; i++) { contents[i].classList.remove('active'); }
+            const pills = document.getElementsByClassName('tab-pill');
+            for (let i = 0; i < pills.length; i++) { pills[i].classList.remove('active'); }
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function toggleTheme(checkbox) {
+            if (checkbox.checked) { document.documentElement.setAttribute('data-theme', 'light'); }
+            else { document.documentElement.removeAttribute('data-theme'); }
+        }
+    </script>
+</body>
+</html>
