@@ -81,26 +81,30 @@
             color: var(--accent);
         }
 
-        .theme-btn {
-            background: var(--tab-inactive);
-            border: 1px solid var(--card-border);
-            color: var(--text-main);
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.2s;
-        }
-
-        .theme-btn:hover {
-            border-color: var(--accent);
-        }
-
         .container {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
+        }
+
+        /* --- ЗАГОЛОВКИ СЕКЦИЙ --- */
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 30px 0 15px 0;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--card-border);
         }
 
         /* --- СТРАНИЦЫ И СЕТКИ --- */
@@ -116,10 +120,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
-            margin-top: 20px;
         }
 
-        /* --- КАРТОЧКА ИГРЫ (ГЛАВНАЯ) --- */
+        /* --- КАРТОЧКА ИГРЫ И СЕРВИСА --- */
         .game-selector-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -130,12 +133,30 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
             width: 200px;
+            box-sizing: border-box;
         }
 
         .game-selector-card:hover {
             transform: translateY(-6px) scale(1.02);
             border-color: var(--accent);
             box-shadow: 0 12px 30px var(--accent-glow);
+        }
+
+        .service-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .service-icon-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .roblox-icon {
@@ -337,36 +358,36 @@
 <body>
 
     <!-- ШАПКА САЙТА -->
-     <header>
-    <div class="logo" onclick="showPage('home-page')">MokSteR <span>PAY</span></div>
-    
-    <!-- Сюда вставляешь код нового тумблера -->
-    <div class="theme-switch-container">
-        <label class="theme-switch">
-            <input type="checkbox" onchange="if(this.checked){document.documentElement.setAttribute('data-theme','light')}else{document.documentElement.removeAttribute('data-theme')}">
-            <div class="switch-slider"></div>
-        </label>
-        <style>
-            .theme-switch { display: inline-block; height: 34px; position: relative; width: 64px; }
-            .theme-switch input { display: none; }
-            .switch-slider { background-color: #2d3748; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: 0.4s; border-radius: 34px; border: 1px solid rgba(59, 130, 246, 0.2); }
-            .switch-slider:before { background-color: #111827; bottom: 3px; content: ""; height: 26px; left: 4px; position: absolute; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); width: 26px; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
-            .switch-slider::after { content: "🌙"; position: absolute; font-size: 14px; left: 9px; top: 6px; transition: 0.4s; pointer-events: none; }
-            input:checked + .switch-slider { background-color: #e0f2fe; }
-            input:checked + .switch-slider:before { transform: translateX(28px); background-color: #ffffff; }
-            input:checked + .switch-slider::after { content: "☀️"; left: 36px; font-size: 15px; top: 5px; }
-            [data-theme="light"] .switch-slider { background-color: #cbd5e1; }
-        </style>
-    </div>
-
-</header>
-
+    <header>
+        <div class="logo" onclick="showPage('home-page')">MokSteR <span>PAY</span></div>
+        
+        <div class="theme-switch-container">
+            <label class="theme-switch">
+                <input type="checkbox" onchange="if(this.checked){document.documentElement.setAttribute('data-theme','light')}else{document.documentElement.removeAttribute('data-theme')}">
+                <div class="switch-slider"></div>
+            </label>
+            <style>
+                .theme-switch { display: inline-block; height: 34px; position: relative; width: 64px; }
+                .theme-switch input { display: none; }
+                .switch-slider { background-color: #2d3748; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: 0.4s; border-radius: 34px; border: 1px solid rgba(59, 130, 246, 0.2); }
+                .switch-slider:before { background-color: #111827; bottom: 3px; content: ""; height: 26px; left: 4px; position: absolute; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); width: 26px; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+                .switch-slider::after { content: "🌙"; position: absolute; font-size: 14px; left: 9px; top: 6px; transition: 0.4s; pointer-events: none; }
+                input:checked + .switch-slider { background-color: #e0f2fe; }
+                input:checked + .switch-slider:before { transform: translateX(28px); background-color: #ffffff; }
+                input:checked + .switch-slider::after { content: "☀️"; left: 36px; font-size: 15px; top: 5px; }
+                [data-theme="light"] .switch-slider { background-color: #cbd5e1; }
+            </style>
+        </div>
+    </header>
 
     <!-- ОСНОВНОЙ КОНТЕНТ -->
     <div class="container">
         
-        <!-- СТРАНИЦА 1: ВЫБОР ИГРЫ (ГЛАВНАЯ) -->
+        <!-- СТРАНИЦА 1: ВЫБОР ИГРЫ И СЕРВИСОВ (ГЛАВНАЯ) -->
         <div id="home-page" class="page active">
+            
+            <!-- СЕКЦИЯ: ИГРЫ -->
+            <div class="section-title">Игры</div>
             <div class="grid-games">
                 <div class="game-selector-card" onclick="showPage('roblox-page')">
                     <div class="roblox-icon">
@@ -375,6 +396,31 @@
                     <h3 class="game-name">Roblox</h3>
                 </div>
             </div>
+
+            <!-- СЕКЦИЯ: СЕРВИСЫ -->
+            <div class="section-title">Сервисы</div>
+            <div class="grid-games">
+                <div class="game-selector-card" onclick="alert('Раздел Steam находится в разработке')">
+                    <div class="service-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="70" height="70">
+                            <path fill="#1b2838" d="M0 0h24v24H0z"/>
+                            <path fill="#ffffff" d="M12 2a10 10 0 0 0-10 10c0 4.75 3.31 8.73 7.76 9.74l2.29-3.23a3.5 3.5 0 0 1-.55-1.92 3.5 3.5 0 0 1 3.5-3.5c.21 0 .42.02.62.06l3.12-4.52V8.5a3.5 3.5 0 0 1 3.5-3.5 3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5c-.21 0-.42-.02-.62-.06l-3.12 4.52v.13a3.5 3.5 0 0 1-3.5 3.5 3.5 3.5 0 0 1-3.41-2.73l-2.92 1.34A10 10 0 0 0 12 22a10 10 0 0 0 10-10A10 10 0 0 0 12 2zm6.5 8a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-6.5 8a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="game-name">Steam</h3>
+                </div>
+
+                <div class="game-selector-card" onclick="alert('Раздел Telegram находится в разработке')">
+                    <div class="service-icon-wrapper">
+                        <svg viewBox="0 0 24 24" width="70" height="70">
+                            <circle cx="12" cy="12" r="12" fill="#2AABEE"/>
+                            <path fill="#ffffff" d="M5.4 11.7l11.8-4.5c0.5-0.2 1 0.1 0.9 0.7l-2 9.5c-.1 0.6-0.5 0.8-1 0.5l-3.2-2.4-1.5 1.5c-.2.2-.3.3-.6.3l.2-3.2 5.8-5.3c0.3-.2-.1-.4-.4-.2l-7.2 4.5-3.1-1c-.6-.2-.6-.6 0.1-0.9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="game-name">Telegram</h3>
+                </div>
+            </div>
+
         </div>
 
         <!-- СТРАНИЦА 2: ВИТРИНА ROBLOX -->
@@ -476,19 +522,6 @@
 
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
-        }
-
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const btn = document.getElementById('themeBtn');
-            
-            if (currentTheme === 'light') {
-                document.documentElement.removeAttribute('data-theme');
-                btn.textContent = 'Светлая тема';
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                btn.textContent = 'Тёмная тема';
-            }
         }
     </script>
 </body>
